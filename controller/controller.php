@@ -3,9 +3,19 @@
 require_once 'core/Connect.php';
 require_once 'model/Article.php';
 
-$reqs = $DB->query();
 
-// foreach ($reqs as $reqs => $req) {
+try {
+    $articles = $pdo->query('SELECT * FROM `articles`');
+    // $req = 'SELECT * FROM `articles`';
+    // $articles = $DB->log();
+
+    if ($articles === false) {
+        die("Erreur");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+// foreach ($articles as $req) {
 //     echo "<p>{$req["article_name"]}</p>";
 //     echo "<p>{$req["article_price"]}</p>";
 //     echo "<p>{$req["article_text"]}</p>";
@@ -16,4 +26,4 @@ $reqs = $DB->query();
 
 $article = new Article();
 
-$article->dispArticles($reqs);
+$article->dispArticles($articles);

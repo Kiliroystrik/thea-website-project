@@ -2,35 +2,53 @@
 class Connect
 {
 
-    private $_host = "localhost";
-    private $_dbName = "kiliroy_shop";
-    private $_user = "kiliroy";
-    private $_pass = "N4rutokado";
-    private $_db;
+    private $_host;
+    private $_dbName;
+    private $_user;
+    private $_pass;
+    // private $_db;
     // 2RaM58IvpCHmSxit 
     // USER 'Kiliroy-PC' 
 
-    public function __construct($host = NULL, $dbName = NULL, $user = NULL, $password = NULL)
+    public function __construct()
     {
-        if ($host != NULL) {
-            $this->_host = $host;
-            $this->_dbName = $dbName;
-            $this->_user = $user;
-            $this->_pass = $password;
-        }
+        $this->_host = "localhost";
+        $this->_dbName = "kiliroy_shop";
+        $this->_user = "kiliroy";
+        $this->_pass = "N4rutokado";
+    }
+
+    public function dataBase()
+    {
 
         try {
-            $this->_db = new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_dbName, $this->_user, $this->_pass);
-            $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo = new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_dbName, $this->_user, $this->_pass);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            return $pdo;
         } catch (PDOException $e) {
-            die("Impossible d'acceder à la base de donnée");
+            echo "Connection failed: " . $e->getMessage();
         }
     }
 
-    public function query()
-    {
-        $req = $this->_db->query('select * from articles');
-        return $req->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // try {
+    //     $this->_db = new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_dbName, $this->_user, $this->_pass);
+    //     $this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // } catch (PDOException $e) {
+    //     die("Impossible d'acceder à la base de donnée");
+    // }
+
+
+    // public function ()
+    // {
+    //     $req = $this->_db->query('select * from articles');
+    //     return $req->fetchAll(PDO::FETCH_ASSOC);
+    // }
+
+    // public function prepare($sql)
+    // {
+    //     $req = $this->_db->prepare($sql);
+    // }
 }
-$DB = new Connect();
+$DBC = new Connect();
+$pdo = $DBC->dataBase();

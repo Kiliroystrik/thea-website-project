@@ -16,7 +16,7 @@
     <header>
         <!-- LOGGING -->
         <div>
-            <a href="#"><i class="fas fa-leaf"></i></a>
+            <a href="../view/inscription.php"><i class="fas fa-leaf"></i></a>
             <a href="#"><i class="fas fa-door-open"></i></a>
             <a href="#"><i class="fas fa-shopping-basket"></i></a>
         </div>

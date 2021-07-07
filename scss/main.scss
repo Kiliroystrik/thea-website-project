@@ -271,6 +271,9 @@ main{
                     border: $color-secondary solid 2px;
                     margin: 3em 1em;
                     padding: 2em 0;
+                    &:hover{
+                        background: #0f0f0f21;
+                    }
                     h3{
                         color:$color-secondary;
                         text-decoration: overline;
@@ -305,8 +308,22 @@ main{
 
 
 footer{
-    background: url("../assets/img/footer.jpg") no-repeat center;
+    background: rgb(25, 126, 121) url("../assets/img/footer.jpg") no-repeat center  ;
     background-size: cover;
-    height: 800px;
+    // height: 800px;
+    color: white;
+    div{
+        display: flex;
+        ul{
+            list-style: none;
+
+            a{
+                text-decoration: none;
+                color:white;
+                @include nav-button();
+            }
+        }
+
+    }
 }
 

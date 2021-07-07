@@ -19,6 +19,7 @@ class Article
                 <p> <?= $req["article_description"] ?> </p>
                 <p> <?= $req["article_text"] ?> </p>
                 <span class="price"> <?= $req["article_price"] ?> $ </span>
+                <a href="#" class="add">Détails</a>
                 <a href="#" class="add">Ajouter</a>
             </article>
 <?php
